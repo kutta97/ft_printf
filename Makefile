@@ -31,7 +31,7 @@ LIBFT_LIB	= $(LIBFT).a
 LIBFT_DIR	= ./$(LIBFT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $(INCLUEDS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCLUEDS) -o $@ -c $<
 
 all: $(NAME)
 
