@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/11 21:17:02 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/11 21:54:09 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 # include <stdarg.h>
 
 int	ft_printf(const char *format, ...);
+int	ft_putchar(int c);
 
 #endif
