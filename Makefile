@@ -6,12 +6,13 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/11 22:42:42 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/12 01:29:36 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_DIR	= sources/
-SRCS_LST	= ft_putchar.c
+SRCS_LST	= ft_putchar.c \
+				ft_init_conversions.c
 SRCS		= ft_printf.c \
 				$(addprefix $(SRCS_DIR), $(SRCS_LST))
 
