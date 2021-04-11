@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:47:48 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 02:54:31 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,7 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-typedef enum	e_type
-{
-	c,
-	s,
-	p,
-	d,
-	i,
-	u,
-	x,
-	X
-}				t_type;
+# define TYPE "csdiupxX"
 
 typedef	struct	s_flags
 {
@@ -39,7 +29,7 @@ typedef struct	s_conversions
 	t_flags		flags;
 	int			width;
 	int			precision;
-	t_type		type;
+	char		type;
 }				t_conversions;
 
 int				ft_printf(const char *format, ...);
