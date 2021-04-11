@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:37:07 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:47:24 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 02:25:15 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,23 @@
 
 void	ft_check_precision(va_list ap, char *format, int *i, t_conversions *conv)
 {
+	if (format[*i] != '.')
+		return ;
+	(*i)++;
+	if (ft_isdigit(format[*i]))
+	{
+		int width;
 
+		width = 0;
+		while (ft_isdigit(format[*i]))
+			width = (width * 10) + format[(*i)++] - '0';
+		conv->precision = width;
+		return ;
+	}
+	if (format[*i] == '*')
+	{
+		conv->precision = va_arg(ap, int);
+		(*i)++;
+		return ;
+	}
 }
