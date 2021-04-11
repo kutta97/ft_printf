@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/11 21:54:09 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 00:49:30 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,33 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(int c);
+typedef enum	e_type
+{
+	c,
+	s,
+	p,
+	d,
+	i,
+	u,
+	x,
+	X
+}				t_type;
+
+typedef	struct	s_flags
+{
+	int			minus;
+	int			zero;
+}				t_flags;
+
+typedef struct	s_conversions
+{
+	t_flags		flags;
+	int			width;
+	int			precision;
+	t_type		type;
+}				t_conversions;
+
+int				ft_printf(const char *format, ...);
+int				ft_putchar(int c);
 
 #endif
