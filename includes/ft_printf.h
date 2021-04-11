@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/11 21:14:05 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/11 21:17:02 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-int	ft_printf(const char *str, ...);
+int	ft_printf(const char *format, ...);
 
 #endif
