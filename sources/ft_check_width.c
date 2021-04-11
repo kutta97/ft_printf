@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:36:21 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:47:27 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 02:16:10 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,20 @@
 
 void	ft_check_width(va_list ap, char *format, int *i, t_conversions *conv)
 {
+	if (ft_isdigit(format[*i]))
+	{
+		int width;
 
+		width = 0;
+		while (ft_isdigit(format[*i]))
+			width = (width * 10) + format[(*i)++] - '0';
+		conv->width = width;
+		return ;
+	}
+	if (format[*i] == '*')
+	{
+		conv->width = va_arg(ap, int);
+		(*i)++;
+		return ;
+	}
 }
