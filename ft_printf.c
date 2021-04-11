@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:42:43 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 01:46:50 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	ft_print_conversions(t_conversions *conv)
 
 int	ft_analyze_conversions(va_list ap, char *format, int i, t_conversions *conv)
 {
-	ft_check_flags(ap, format, i, conv);
-	ft_check_width(ap, format, i, conv);
-	ft_check_precision(ap, format, i, conv);
-	ft_check_type(ap, format, i, conv);
+	ft_check_flags(ap, format, &i, conv);
+	ft_check_width(ap, format, &i, conv);
+	ft_check_precision(ap, format, &i, conv);
+	ft_check_type(ap, format, &i, conv);
+	return (i);
 }
 
 int	ft_parse_format(va_list ap, char *format)
