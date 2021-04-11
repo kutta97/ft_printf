@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 03:29:10 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 03:37:49 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-# define TYPE "csdiupxX%"
+# define TYPE "cspdiuxX%"
 
 typedef	struct	s_flags
 {
