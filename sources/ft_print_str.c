@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 03:17:10 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 03:30:57 by hyyang           ###   ########.fr       */
+/*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
+/*   Updated: 2021/04/12 03:44:56 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	ft_print_char(int c, t_conversions *conv)
+int	ft_print_str(char *str, t_conversions *conv)
 {
-
+	
 }
