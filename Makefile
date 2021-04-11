@@ -6,7 +6,7 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/11 22:13:21 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/11 22:34:34 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,11 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
