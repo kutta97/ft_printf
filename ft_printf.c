@@ -6,28 +6,47 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/11 22:04:11 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 01:42:43 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
+int	ft_print_conversions(t_conversions *conv)
+{
+
+}
+
+int	ft_analyze_conversions(va_list ap, char *format, int i, t_conversions *conv)
+{
+	ft_check_flags(ap, format, i, conv);
+	ft_check_width(ap, format, i, conv);
+	ft_check_precision(ap, format, i, conv);
+	ft_check_type(ap, format, i, conv);
+}
+
 int	ft_parse_format(va_list ap, char *format)
 {
-	int	i;
-	int ncp;
+	int				i;
+	int				ncp;
+	t_conversions	*conv;
 
 	i = 0;
 	ncp = 0;
+	if (!(conv = malloc(sizeof(t_conversions))))
+		return (-1);
 	while (format[i])
 	{
-		ncp += ft_putchar(format[i++]);
-		if (i < 0)
+		if (format[i++] == '%')
 		{
-			va_arg(ap, char*);
+			ft_init_conversions(conv);
+			ft_analyze_conversions(ap, format, i, conv);
+			ft_print_conversions(conv);
 		}
+		ncp += ft_putchar(format[i++]);
 	}
-	return ncp;
+	free(conv);
+	return (ncp);
 }
 
 int	ft_printf(const char *format, ...)
