@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:29:49 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 01:34:49 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ typedef struct	s_conversions
 int				ft_printf(const char *format, ...);
 int				ft_putchar(int c);
 void			ft_init_conversions(t_conversions *conv);
+void			ft_check_flags(va_list ap, char *format, int i, t_conversions *conv);
+void			ft_check_width(va_list ap, char *format, int i, t_conversions *conv);
+void			ft_check_precision(va_list ap, char *format, int i, t_conversions *conv);
+void			ft_check_type(va_list ap, char *format, int i, t_conversions *conv);
 
 #endif

@@ -6,13 +6,17 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/12 01:29:36 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/12 01:40:51 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_DIR	= sources/
 SRCS_LST	= ft_putchar.c \
-				ft_init_conversions.c
+				ft_init_conversions.c \
+				ft_check_flags.c \
+				ft_check_width.c \
+				ft_check_precision.c \
+				ft_check_type.c
 SRCS		= ft_printf.c \
 				$(addprefix $(SRCS_DIR), $(SRCS_LST))
 
