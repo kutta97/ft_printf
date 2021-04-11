@@ -6,7 +6,7 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 03:01:36 by hyyang            #+#    #+#              #
-#    Updated: 2021/02/03 00:43:06 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/11 20:36:31 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,8 @@ NAME	= libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(OBJS_B)
 	$(AR) $@ $^
-
-bonus: $(OBJS_B)
-	$(AR) $(NAME) $^
 
 clean:
 	$(RM) $(OBJS) $(OBJS_B)
