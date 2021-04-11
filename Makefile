@@ -6,13 +6,15 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/11 20:59:28 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/11 22:13:21 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SRCS_DIR	= sources/
+SRCS_LST	= ft_putchar.c
 SRCS		= ft_printf.c \
-				#sources/ft_sample.c
-			
+				$(addprefix $(SRCS_DIR), $(SRCS_LST))
+
 OBJS		= $(SRCS:%.c=%.o)
 
 AR			= ar -crs
@@ -29,7 +31,7 @@ LIBFT_LIB	= $(LIBFT).a
 LIBFT_DIR	= ./$(LIBFT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< $(INCLUEDS)
+	$(CC) $(CFLAGS) -c $(INCLUEDS) -o $@ -c $<
 
 all: $(NAME)
 
