@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:36:13 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 01:48:05 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/12 01:55:55 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 
 void	ft_check_flags(va_list ap, char *format, int *i, t_conversions *conv)
 {
-	
+	if (format[*i] == '-')
+	{
+		conv->flags.minus = 1;
+		(*i)++;
+	}
+	if (format[*i] == '0')
+	{
+		conv->flags.zero = 1;
+		(*i)++;
+	}
 }
