@@ -6,13 +6,13 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:36:13 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:52:34 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 02:30:31 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_check_flags(va_list ap, char *format, int *i, t_convs *conv)
+void	ft_check_flags(char *format, int *i, t_convs *conv)
 {
 	while (format[*i] == '-' || format[*i] == '0')
 	{

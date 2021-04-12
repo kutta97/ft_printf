@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:11:23 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 02:39:15 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int		ft_print_conversions(va_list ap, t_convs *conv)
 		return (ft_print_chr('%', conv));
 	if (conv->type == 'c')
 		return (ft_print_chr(va_arg(ap, int), conv));
-	if (conv->type == 's')
-		return (ft_print_str(va_arg(ap, char *), conv));
-	if (conv->type == 'd' || conv->type == 'i')
-		return (ft_print_nbr(va_arg(ap, int), conv));
-	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'u')
-		return (ft_print_nbr(va_arg(ap, unsigned int), conv));
-	if (conv->type == 'p')
-		return (ft_print_nbr(va_arg(ap, unsigned long long), conv));
+	// if (conv->type == 's')
+	// 	return (ft_print_str(va_arg(ap, char *), conv));
+	// if (conv->type == 'd' || conv->type == 'i')
+	// 	return (ft_print_nbr(va_arg(ap, int), conv));
+	// if (conv->type == 'x' || conv->type == 'X' || conv->type == 'u')
+	// 	return (ft_print_nbr(va_arg(ap, unsigned int), conv));
+	// if (conv->type == 'p')
+	// 	return (ft_print_nbr(va_arg(ap, unsigned long long), conv));
+	return (0);
 }
 
 int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
@@ -33,10 +34,10 @@ int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
 	int format_start;
 
 	format_start = i - 1;
-	ft_check_flags(ap, format, &i, conv);
+	ft_check_flags(format, &i, conv);
 	ft_check_width(ap, format, &i, conv);
 	ft_check_precision(ap, format, &i, conv);
-	ft_check_type(ap, format, &i, conv);
+	ft_check_type(format, &i, conv);
 	if (conv->type == 0)
 		return (format_start);
 	return (i);

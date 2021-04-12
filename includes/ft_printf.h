@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:07:08 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 02:38:55 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,14 @@ typedef struct	s_convs
 int				ft_printf(const char *format, ...);
 int				ft_putchar(int c);
 void			ft_init_conversions(t_convs *conv);
-void			ft_check_flags(va_list ap, char *format, int *i,
-													t_convs *conv);
+void			ft_check_flags(char *format, int *i, t_convs *conv);
 void			ft_check_width(va_list ap, char *format, int *i,
 													t_convs *conv);
 void			ft_check_precision(va_list ap, char *format, int *i,
 													t_convs *conv);
-void			ft_check_type(va_list ap, char *format, int *i,
-													t_convs *conv);
+void			ft_check_type(char *format, int *i, t_convs *conv);
 int				ft_print_chr(int c, t_convs *conv);
-int				ft_print_str(char *str, t_convs *conv);
-int				ft_print_nbr(unsigned long long nbr, t_convs *conv);
+//int				ft_print_str(char *str, t_convs *conv);
+//int				ft_print_nbr(unsigned long long nbr, t_convs *conv);
 
 #endif
