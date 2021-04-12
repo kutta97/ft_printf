@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:07:32 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 01:09:13 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_parse_format(va_list ap, char *format)
 	int				i;
 	int				tmp;
 	int				ncp;
-	t_convs	*conv;
+	t_convs			*conv;
 
 	i = 0;
 	ncp = 0;
