@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:10 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:07:21 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 02:27:56 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,19 @@
 
 int	ft_print_chr(int c, t_convs *conv)
 {
+	int	ncp;
+	int	space;
 
+	ncp = 0;
+	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';
+	if (conv->flags.minus)
+		ft_putchar(c);
+	while (--(conv->width))
+	{
+		ft_putchar(space);
+		ncp++;
+	}
+	if (conv->flags.zero && !conv->flags.minus)
+		ft_putchar(c);
+	return (ncp);
 }
