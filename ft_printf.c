@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 03:46:29 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 01:01:37 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,24 @@ int		ft_print_conversions(va_list ap, t_conversions *conv)
 		return (ft_print_nbr(va_arg(ap, unsigned long long), conv));
 }
 
-void	ft_analyze_conversions(va_list ap, char *format, int *i, t_conversions *conv)
+int		ft_analyze_conversions(va_list ap, char *format, int i, t_conversions *conv)
 {
-	ft_check_flags(ap, format, i, conv);
-	ft_check_width(ap, format, i, conv);
-	ft_check_precision(ap, format, i, conv);
-	ft_check_type(ap, format, i, conv);
+	int format_start;
+
+	format_start = i - 1;
+	ft_check_flags(ap, format, &i, conv);
+	ft_check_width(ap, format, &i, conv);
+	ft_check_precision(ap, format, &i, conv);
+	ft_check_type(ap, format, &i, conv);
+	if (conv->type == 0)
+		return (format_start);
+	return (i);
 }
 
 int		ft_parse_format(va_list ap, char *format)
 {
 	int				i;
+	int				tmp;
 	int				ncp;
 	t_conversions	*conv;
 
@@ -50,8 +57,11 @@ int		ft_parse_format(va_list ap, char *format)
 	{
 		if (format[i++] == '%')
 		{
+			tmp = i;
 			ft_init_conversions(conv);
-			ft_analyze_conversions(ap, format, &i, conv);
+			i = ft_analyze_conversions(ap, format, i, conv);
+			if (i < tmp)
+				ncp += ft_putchar(format[i++]);
 			ncp += ft_print_conversions(ap, conv);
 		}
 		ncp += ft_putchar(format[i++]);
