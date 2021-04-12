@@ -6,11 +6,11 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:10 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 02:27:56 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 02:33:14 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_print_chr(int c, t_convs *conv)
 {
