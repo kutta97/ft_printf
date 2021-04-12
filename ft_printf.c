@@ -6,13 +6,13 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:01:37 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 01:07:32 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int		ft_print_conversions(va_list ap, t_conversions *conv)
+int		ft_print_conversions(va_list ap, t_convs *conv)
 {
 	if (conv->type == '%')
 		return (ft_print_chr('%', conv));
@@ -28,7 +28,7 @@ int		ft_print_conversions(va_list ap, t_conversions *conv)
 		return (ft_print_nbr(va_arg(ap, unsigned long long), conv));
 }
 
-int		ft_analyze_conversions(va_list ap, char *format, int i, t_conversions *conv)
+int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
 {
 	int format_start;
 
@@ -47,11 +47,11 @@ int		ft_parse_format(va_list ap, char *format)
 	int				i;
 	int				tmp;
 	int				ncp;
-	t_conversions	*conv;
+	t_convs	*conv;
 
 	i = 0;
 	ncp = 0;
-	if (!(conv = malloc(sizeof(t_conversions))))
+	if (!(conv = malloc(sizeof(t_convs))))
 		return (-1);
 	while (format[i])
 	{

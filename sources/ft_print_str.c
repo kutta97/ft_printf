@@ -6,13 +6,13 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/12 03:44:56 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 01:07:24 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	ft_print_str(char *str, t_conversions *conv)
+int	ft_print_str(char *str, t_convs *conv)
 {
 	
 }
