@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 01:09:13 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/13 01:11:23 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ int		ft_parse_format(va_list ap, char *format)
 			tmp = i;
 			ft_init_conversions(conv);
 			i = ft_analyze_conversions(ap, format, i, conv);
-			if (i < tmp)
-				ncp += ft_putchar(format[i++]);
-			ncp += ft_print_conversions(ap, conv);
+			if (i >= tmp)
+				ncp += ft_print_conversions(ap, conv);
 		}
 		ncp += ft_putchar(format[i++]);
 	}
