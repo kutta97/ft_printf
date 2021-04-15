@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 22:03:58 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/15 22:09:49 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int		ft_print_str(char *str, t_convs *conv)
 		return (0);
 	if (conv->flags.minus)
 		ncp += ft_print_buf(buf);
-	while (conv->width-- > 1)
+	conv->width -= ft_strlen(buf);
+	while (conv->width-- > 0)
 	{
 		ft_putchar(space);
 		ncp++;
