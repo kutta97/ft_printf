@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 02:39:15 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/15 20:25:37 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_parse_format(va_list ap, char *format)
 		return (-1);
 	while (format[i])
 	{
-		if (format[i++] == '%')
+		if (format[i] == '%')
 		{
 			tmp = i;
 			ft_init_conversions(conv);
@@ -64,6 +64,7 @@ int		ft_parse_format(va_list ap, char *format)
 			if (i >= tmp)
 				ncp += ft_print_conversions(ap, conv);
 		}
+		printf("format[%d] = %c\n", i, format[i]);
 		ncp += ft_putchar(format[i++]);
 	}
 	free(conv);
