@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 20:25:37 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/15 20:48:14 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
 {
 	int format_start;
 
-	format_start = i - 1;
+	format_start = i++;
 	ft_check_flags(format, &i, conv);
 	ft_check_width(ap, format, &i, conv);
 	ft_check_precision(ap, format, &i, conv);
@@ -61,10 +61,12 @@ int		ft_parse_format(va_list ap, char *format)
 			tmp = i;
 			ft_init_conversions(conv);
 			i = ft_analyze_conversions(ap, format, i, conv);
-			if (i >= tmp)
+			if (i > tmp)
+			{
 				ncp += ft_print_conversions(ap, conv);
+				continue ;
+			}
 		}
-		printf("format[%d] = %c\n", i, format[i]);
 		ncp += ft_putchar(format[i++]);
 	}
 	free(conv);
