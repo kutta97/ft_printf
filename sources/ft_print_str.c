@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 22:01:27 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/15 22:03:58 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ char	*ft_set_buf(char *str, t_convs *conv)
 	len = ft_strlen(str);
 	
 	if (conv->precision > 0 && conv->precision < len)
-		return (ft_cpy_to_buf(str, conv->precision));
+		buf = ft_cpy_to_buf(str, conv->precision);
 	else
-		return (ft_cpy_to_buf(str, len));
+		buf = ft_cpy_to_buf(str, len);
+	return (buf);
 }
 
 int		ft_print_buf(char *buf)
