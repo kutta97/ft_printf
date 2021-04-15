@@ -6,11 +6,21 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 21:56:26 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/15 22:01:27 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+char	*ft_cpy_to_buf(char *str, int len)
+{
+	char	*buf;
+	if (!(buf = malloc((len + 1) * sizeof(char))))
+			return (0);
+	ft_memcpy(buf, str, len);
+	buf[len] = '\0';
+	return (buf);
+}
 
 char	*ft_set_buf(char *str, t_convs *conv)
 {
@@ -20,19 +30,9 @@ char	*ft_set_buf(char *str, t_convs *conv)
 	len = ft_strlen(str);
 	
 	if (conv->precision > 0 && conv->precision < len)
-	{
-		if (!(buf = malloc((conv->precision + 1) * sizeof(char))))
-			return (0);
-		ft_memcpy(buf, str, conv->precision);
-	}
+		return (ft_cpy_to_buf(str, conv->precision));
 	else
-	{
-		if (!(buf = malloc((len + 1) * sizeof(char))))
-			return (0);
-		ft_memcpy(buf, str, len);
-	}
-	buf[len] = '\0';
-	return (buf);
+		return (ft_cpy_to_buf(str, len));
 }
 
 int		ft_print_buf(char *buf)
