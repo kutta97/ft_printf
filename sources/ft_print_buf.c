@@ -6,9 +6,11 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 19:29:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 19:29:52 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 21:00:25 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/ft_printf.h"
 
 int		ft_print_buf(char *buf)
 {
