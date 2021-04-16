@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 20:55:15 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:14:21 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void			ft_check_precision(va_list ap, char *format, int *i,
 void			ft_check_type(char *format, int *i, t_convs *conv);
 int				ft_print_chr(int c, t_convs *conv);
 int				ft_print_str(char *str, t_convs *conv);
-//int				ft_print_nbr(unsigned long long nbr, t_convs *conv);
+int				ft_print_nbr(unsigned long long nbr, t_convs *conv);
 
 #endif
