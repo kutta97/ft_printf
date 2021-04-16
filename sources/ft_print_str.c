@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 15:09:45 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:46:46 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 char	*ft_cpy_to_buf(char *str, int len)
 {
 	char	*buf;
+
 	if (!(buf = malloc((len + 1) * sizeof(char))))
-			return (0);
+		return (0);
 	ft_memcpy(buf, str, len);
 	buf[len] = '\0';
 	return (buf);
@@ -26,9 +27,8 @@ char	*ft_set_buf(char *str, t_convs *conv)
 {
 	int		len;
 	char	*buf;
-	
+
 	len = ft_strlen(str);
-	
 	if (conv->precision > 0 && conv->precision < len)
 		buf = ft_cpy_to_buf(str, conv->precision);
 	else
@@ -53,7 +53,7 @@ int		ft_print_str(char *str, t_convs *conv)
 	int		ncp;
 	int		space;
 	char	*buf;
-	
+
 	ncp = 0;
 	buf = 0;
 	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';

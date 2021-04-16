@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:37:07 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 14:55:04 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:44:30 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ void	ft_check_precision(va_list ap, char *format, int *i, t_convs *conv)
 	{
 		conv->precision = va_arg(ap, int);
 		(*i)++;
-		return ;
 	}
 }

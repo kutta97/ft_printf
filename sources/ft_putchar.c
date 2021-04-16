@@ -6,13 +6,13 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:36:48 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/11 21:51:58 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:46:58 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	return (write(1, &c, 1));
 }
