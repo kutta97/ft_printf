@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 20:59:31 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 21:34:58 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@ char	*ft_base_set(char type)
 	return (0);
 }
 
+char	*ft_nbrbase_to_buf(unsigned long long nbr, int base, int len,
+																t_convs *conv)
+{
+	char	*buf;
+
+	if (!(buf = malloc((len + 1) * sizeof(char))))
+		return (0);
+	buf[len] = '\0';
+	while (nbr > 0)
+	{
+		len--;
+		buf[len] = ft_base_set(conv->type)[nbr % base];
+		nbr /= base;
+	}
+	return (buf);
+}
+
 int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 {
 	int	len;
@@ -35,27 +52,9 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 	while (nbr >= (unsigned long long)base)
 	{
 		len++;
-		nbr = nbr / base;
-	}
-	return (len);
-}
-
-char	*ft_nbrbase_to_buf(unsigned long long nbr, int base, int len, t_convs *conv)
-{
-	char	*buf;
-
-	if (!(buf = malloc((len + 1) * sizeof(char))))
-		return (0);
-	while (nbr > 0)
-	{
-		len--;
-		buf[len] = ft_base_set(conv->type)[nbr % base];
 		nbr /= base;
 	}
-	if (nbr == 0)
-		buf[len] = '0';
-	buf[len] = '\0';
-	return (buf);
+	return (len);
 }
 
 char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
@@ -74,7 +73,7 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 	}
 	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'p')
 		base = 16;
-	len = ft_nbr_len(nbr, base, sign, conv);
+	len = ft_nbr_len(nbr, sign, base, conv);
 	buf = ft_nbrbase_to_buf(nbr, base, len, conv);
 	if (sign < 0)
 		buf[0] = '-';
@@ -83,7 +82,7 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 	return (buf);
 }
 
-int	ft_print_nbr(unsigned long long nbr, t_convs *conv)
+int		ft_print_nbr(unsigned long long nbr, t_convs *conv)
 {
 	int		ncp;
 	int		space;
