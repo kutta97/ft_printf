@@ -6,13 +6,105 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/13 02:33:29 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 20:56:11 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
+char	*ft_base_set(char type)
+{
+	if (type == 'd' || type == 'i' || type == 'u')
+		return ("0123456789");
+	if (type == 'x' || type == 'p')
+		return ("0123456789abcdef");
+	if (type == 'X')
+		return ("0123456789ABCDEF");
+	return (0);
+}
+
+int		*ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
+{
+	int	len;
+
+	len = 1;
+	if (sign < 0)
+		len++;
+	if (conv->type == 'p')
+		len += 2;
+	while (nbr >= base)
+	{
+		len++;
+		nbr = nbr / base;
+	}
+	return (len);
+}
+
+char	*ft_nbrbase_to_buf(unsigned long long nbr, int base, int len, t_convs *conv)
+{
+	char	*buf;
+	char	c;
+
+	if (!(buf = malloc((len + 1) * sizeof(char))))
+		return (0);
+	while (nbr > 0)
+	{
+		len--;
+		buf[len] = ft_base_set(conv->type)[nbr % base];
+		nbr /= base;
+	}
+	if (nbr == 0)
+		buf[len] = '0';
+	buf[len] = '\0';
+	return (buf);
+}
+
+char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
+{
+	int		sign;
+	int		base;
+	int		len;
+	char	*buf;
+
+	sign = 1;
+	base = 10;
+	if ((conv->type == 'd' || conv->type == 'i') && nbr < 0)
+	{
+		sign = -1;
+		nbr = -nbr;
+	}
+	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'p')
+		base = 16;
+	len = ft_nbr_len(nbr, base, sign, conv);
+	buf = ft_nbrbase_to_buf(nbr, base, sign, len);
+	if (sign < 0)
+		buf[0] = '-';
+	if (conv->type == 'p')
+		ft_memcpy(buf, "0x", 2);
+	return (buf);
+}
+
 int	ft_print_nbr(unsigned long long nbr, t_convs *conv)
 {
-	return (0);
+	int		ncp;
+	int		space;
+	char	*buf;
+
+	ncp = 0;
+	buf = 0;
+	space = (!conv->flags.minus) ? '0' : ' ';
+	if (!(buf = ft_set_nbrbuf(nbr, conv)))
+		return (0);
+	if (conv->flags.minus)
+		ncp += ft_print_buf(buf);
+	conv->width -= ft_strlen(buf);
+	while (conv->width-- > 0)
+	{
+		ft_putchar(space);
+		ncp++;
+	}
+	if (!conv->flags.minus)
+		ncp += ft_print_buf(buf);
+	free(buf);
+	return (ncp);
 }
