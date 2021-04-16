@@ -6,13 +6,13 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 15:46:46 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 16:58:56 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_cpy_to_buf(char *str, int len)
+char	*ft_strcpy_to_buf(char *str, int len)
 {
 	char	*buf;
 
@@ -23,16 +23,16 @@ char	*ft_cpy_to_buf(char *str, int len)
 	return (buf);
 }
 
-char	*ft_set_buf(char *str, t_convs *conv)
+char	*ft_set_strbuf(char *str, t_convs *conv)
 {
 	int		len;
 	char	*buf;
 
 	len = ft_strlen(str);
 	if (conv->precision > 0 && conv->precision < len)
-		buf = ft_cpy_to_buf(str, conv->precision);
+		buf = ft_strcpy_to_buf(str, conv->precision);
 	else
-		buf = ft_cpy_to_buf(str, len);
+		buf = ft_strcpy_to_buf(str, len);
 	if (conv->precision == 0)
 		ft_bzero(buf, ft_strlen(buf));
 	return (buf);
@@ -57,7 +57,7 @@ int		ft_print_str(char *str, t_convs *conv)
 	ncp = 0;
 	buf = 0;
 	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';
-	if (!(buf = ft_set_buf(str, conv)))
+	if (!(buf = ft_set_strbuf(str, conv)))
 		return (0);
 	if (conv->flags.minus)
 		ncp += ft_print_buf(buf);
