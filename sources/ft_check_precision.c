@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:37:07 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 21:43:12 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 22:12:55 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@ int		ft_check_digits(char *format, int *i)
 	return (nbr);
 }
 
+void	ft_check_minus_prec(char *format, int *i, t_convs *conv)
+{
+	int digit;
+
+	conv->flags.minus = 1;
+	while (format[*i] == '-')
+		(*i)++;
+	if (ft_isdigit(format[*i]))
+	{
+		digit = ft_check_digits(format, i);
+		if (digit != 0)
+			conv->width = digit;
+	}
+}
+
 void	ft_check_precision(va_list ap, char *format, int *i, t_convs *conv)
 {
 	if (format[*i] != '.')
@@ -30,15 +45,8 @@ void	ft_check_precision(va_list ap, char *format, int *i, t_convs *conv)
 	conv->precision = 0;
 	if (format[*i] == '-')
 	{
-		conv->flags.minus = 1;
-		while (format[*i] == '-')
-			(*i)++;
-		if (ft_isdigit(format[*i]))
-		{
-			if (ft_check_digits(format, i))
-				conv->width = ft_check_digits(format, i);
-			return ;
-		}
+		ft_check_minus_prec(format, i, conv);
+		return ;
 	}
 	if (ft_isdigit(format[*i]))
 	{
