@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 15:14:53 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:57:27 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,14 @@ int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
 	return (i);
 }
 
-int		ft_parse_format(va_list ap, char *format)
+int		ft_parse_format(va_list ap, char *format, t_convs *conv)
 {
 	int				i;
 	int				tmp;
 	int				ncp;
-	t_convs			*conv;
 
 	i = 0;
 	ncp = 0;
-	if (!(conv = malloc(sizeof(t_convs))))
-		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -69,17 +66,20 @@ int		ft_parse_format(va_list ap, char *format)
 		}
 		ncp += ft_putchar(format[i++]);
 	}
-	free(conv);
 	return (ncp);
 }
 
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	t_convs	*conv;
 	int		num_of_chrs_printed;
 
+	if (!(conv = malloc(sizeof(t_convs))))
+		return (-1);
 	va_start(ap, format);
-	num_of_chrs_printed = ft_parse_format(ap, (char *)format);
+	num_of_chrs_printed = ft_parse_format(ap, (char *)format, conv);
 	va_end(ap);
+	free(conv);
 	return (num_of_chrs_printed);
 }
