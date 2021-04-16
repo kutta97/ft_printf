@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 21:34:58 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 21:37:24 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		ft_print_nbr(unsigned long long nbr, t_convs *conv)
 
 	ncp = 0;
 	buf = 0;
-	space = (!conv->flags.minus) ? '0' : ' ';
+	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';
 	if (!(buf = ft_set_nbrbuf(nbr, conv)))
 		return (0);
 	if (conv->flags.minus)
