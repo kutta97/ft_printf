@@ -6,7 +6,7 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/16 15:14:31 by hyyang           ###   ########.fr        #
+#    Updated: 2021/04/16 19:30:39 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS_LST	= ft_putchar.c \
 				ft_check_type.c \
 				ft_print_chr.c \
 				ft_print_str.c \
-				ft_print_nbr.c
+				ft_print_nbr.c \
+				ft_print_buf.c
 
 SRCS		= ft_printf.c \
 				$(addprefix $(SRCS_DIR), $(SRCS_LST))
