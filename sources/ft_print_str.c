@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:24 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/15 22:09:49 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/04/16 15:09:45 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_set_buf(char *str, t_convs *conv)
 		buf = ft_cpy_to_buf(str, conv->precision);
 	else
 		buf = ft_cpy_to_buf(str, len);
+	if (conv->precision == 0)
+		ft_bzero(buf, ft_strlen(buf));
 	return (buf);
 }
 
@@ -53,6 +55,7 @@ int		ft_print_str(char *str, t_convs *conv)
 	char	*buf;
 	
 	ncp = 0;
+	buf = 0;
 	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';
 	if (!(buf = ft_set_buf(str, conv)))
 		return (0);
