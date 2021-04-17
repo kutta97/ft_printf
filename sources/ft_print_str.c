@@ -18,7 +18,10 @@ char	*ft_strcpy_to_buf(char *str, int len)
 
 	if (!(buf = malloc((len + 1) * sizeof(char))))
 		return (0);
-	ft_memcpy(buf, str, len);
+	if (str == 0)
+		ft_memcpy(buf, "(null)", len);
+	else
+		ft_memcpy(buf, str, len);
 	buf[len] = '\0';
 	return (buf);
 }
@@ -28,7 +31,7 @@ char	*ft_set_strbuf(char *str, t_convs *conv)
 	int		len;
 	char	*buf;
 
-	len = ft_strlen(str);
+	len = (str != 0) ? ft_strlen(str) : ft_strlen("(null)");
 	if (conv->precision > 0 && conv->precision < len)
 		buf = ft_strcpy_to_buf(str, conv->precision);
 	else
