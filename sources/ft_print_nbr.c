@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 21:37:24 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/05/19 18:40:54 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_nbrbase_to_buf(unsigned long long nbr, int base, int len,
 	if (!(buf = malloc((len + 1) * sizeof(char))))
 		return (0);
 	buf[len] = '\0';
-	while (nbr > 0)
+	while (len > 0)
 	{
 		len--;
 		buf[len] = ft_base_set(conv->type)[nbr % base];
