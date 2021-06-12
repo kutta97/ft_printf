@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 15:57:27 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 00:11:08 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int		ft_parse_format(va_list ap, char *format, t_convs *conv)
 {
 	int				i;
 	int				tmp;
-	int				ncp;
+	int				num;
 
 	i = 0;
-	ncp = 0;
+	num = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -60,26 +60,26 @@ int		ft_parse_format(va_list ap, char *format, t_convs *conv)
 			i = ft_analyze_conversions(ap, format, i, conv);
 			if (i > tmp)
 			{
-				ncp += ft_print_conversions(ap, conv);
+				num += ft_print_conversions(ap, conv);
 				continue ;
 			}
 		}
-		ncp += ft_putchar(format[i++]);
+		num += ft_putchar(format[i++]);
 	}
-	return (ncp);
+	return (num);
 }
 
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_convs	*conv;
-	int		num_of_chrs_printed;
+	int		num;
 
 	if (!(conv = malloc(sizeof(t_convs))))
 		return (-1);
 	va_start(ap, format);
-	num_of_chrs_printed = ft_parse_format(ap, (char *)format, conv);
+	num = ft_parse_format(ap, (char *)format, conv);
 	va_end(ap);
 	free(conv);
-	return (num_of_chrs_printed);
+	return (num);
 }
