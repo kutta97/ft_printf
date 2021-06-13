@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 20:44:28 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 20:59:24 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void			ft_init_conversions(t_convs *conv);
 void			ft_set_base_and_sign(int type, int *sign, int *base,
 											unsigned long long *nbr);
 void			ft_check_flags(char *format, int *i, t_convs *conv);
-va_list			*ft_check_width(va_list *ap, char *format, int *i,
+void			ft_check_width(va_list ap, char *format, int *i,
 													t_convs *conv);
-va_list			*ft_check_precision(va_list *ap, char *format, int *i,
+void			ft_check_precision(va_list ap, char *format, int *i,
 													t_convs *conv);
 void			ft_check_type(char *format, int *i, t_convs *conv);
 int				ft_print_chr(int c, t_convs *conv);

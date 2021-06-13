@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 20:41:01 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 21:01:24 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 
 	sign = 1;
 	base = 10;
-	ft_set_base_and_sign();
+	ft_set_base_and_sign(conv->type, &sign, &base, &nbr);
 	if (conv->wildcard && conv->precision == 0 && nbr == 0)
 		return (ft_strdup(""));
 	if (!conv->wildcard && conv->precision == 0 && nbr == 0)
