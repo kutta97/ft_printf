@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:37:07 by hyyang            #+#    #+#             */
-/*   Updated: 2021/04/16 22:12:55 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 15:07:33 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,27 @@ void	ft_check_minus_prec(char *format, int *i, t_convs *conv)
 	}
 }
 
-void	ft_check_precision(va_list ap, char *format, int *i, t_convs *conv)
+va_list	*ft_check_precision(va_list *ap, char *format, int *i, t_convs *conv)
 {
 	if (format[*i] != '.')
-		return ;
+		return (ap);
 	(*i)++;
 	conv->precision = 0;
 	if (format[*i] == '-')
 	{
 		ft_check_minus_prec(format, i, conv);
-		return ;
+		return (ap);
 	}
 	if (ft_isdigit(format[*i]))
 	{
 		conv->precision = ft_check_digits(format, i);
-		return ;
+		return (ap);
 	}
 	if (format[*i] == '*')
 	{
-		conv->precision = va_arg(ap, int);
+		conv->precision = va_arg(*ap, int);;
 		(*i)++;
+		return (ap);
 	}
+	return (ap);
 }
