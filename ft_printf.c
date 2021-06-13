@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 00:11:08 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 15:13:15 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int		ft_print_conversions(va_list ap, t_convs *conv)
 	return (0);
 }
 
-int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
+int		ft_analyze_conversions(va_list *ap, char *format, int i, t_convs *conv)
 {
 	int format_start;
 
 	format_start = i++;
 	ft_check_flags(format, &i, conv);
-	ft_check_width(ap, format, &i, conv);
-	ft_check_precision(ap, format, &i, conv);
+	ap = ft_check_width(ap, format, &i, conv);
+	ap = ft_check_precision(ap, format, &i, conv);
 	ft_check_type(format, &i, conv);
 	if (conv->type == 0)
 		return (format_start);
@@ -57,7 +57,7 @@ int		ft_parse_format(va_list ap, char *format, t_convs *conv)
 		{
 			tmp = i;
 			ft_init_conversions(conv);
-			i = ft_analyze_conversions(ap, format, i, conv);
+			i = ft_analyze_conversions(&ap, format, i, conv);
 			if (i > tmp)
 			{
 				num += ft_print_conversions(ap, conv);
