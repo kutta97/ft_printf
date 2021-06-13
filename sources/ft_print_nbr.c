@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 18:30:04 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 20:41:01 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 		len = conv->precision;
 	if (sign < 0)
 		len++;
-	if ((conv->flags.zero && !conv->flags.minus) && conv->width > 0 
+	if ((conv->flags.zero && !conv->flags.minus) && conv->width > 0
 			&& conv->precision < 0 && len < conv->width)
 		len = conv->width;
 	if (conv->type == 'p')
@@ -73,13 +73,7 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 
 	sign = 1;
 	base = 10;
-	if ((conv->type == 'd' || conv->type == 'i') && (int)nbr < 0)
-	{
-		sign = -1;
-		nbr = -nbr;
-	}
-	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'p')
-		base = 16;
+	ft_set_base_and_sign();
 	if (conv->wildcard && conv->precision == 0 && nbr == 0)
 		return (ft_strdup(""));
 	if (!conv->wildcard && conv->precision == 0 && nbr == 0)
