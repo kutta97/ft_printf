@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 16:49:34 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:54:43 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int		ft_print_conversions(va_list *ap, t_convs *conv)
 		return (ft_print_str(va_arg(*ap, char *), conv));
 	if (conv->type == 'd' || conv->type == 'i')
 		return (ft_print_nbr(va_arg(*ap, int), conv));
-	// if (conv->type == 'x' || conv->type == 'X' || conv->type == 'u')
-	// 	return (ft_print_nbr(va_arg(ap, unsigned int), conv));
-	// if (conv->type == 'p')
-	// 	return (ft_print_nbr(va_arg(ap, unsigned long long), conv));
+	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'u')
+		return (ft_print_nbr(va_arg(*ap, unsigned int), conv));
+	if (conv->type == 'p')
+		return (ft_print_nbr(va_arg(*ap, unsigned long long), conv));
 	return (0);
 }
 
