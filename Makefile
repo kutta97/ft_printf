@@ -6,13 +6,14 @@
 #    By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/11 20:08:10 by hyyang            #+#    #+#              #
-#    Updated: 2021/04/16 19:30:39 by hyyang           ###   ########.fr        #
+#    Updated: 2021/06/13 21:05:15 by hyyang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS_DIR	= sources/
 SRCS_LST	= ft_putchar.c \
 				ft_init_conversions.c \
+				ft_set_base_and_sign.c \
 				ft_check_flags.c \
 				ft_check_width.c \
 				ft_check_precision.c \
