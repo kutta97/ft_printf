@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:08:43 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 15:03:48 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:27:16 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_convs
 	t_flags		flags;
 	int			width;
 	int			precision;
+	int			wildcard;
 	char		type;
 }				t_convs;
 
