@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 16:36:42 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 18:30:04 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 	len = 0;
 	if (nbr == 0)
 		len++;
-	if (conv->type == 'p')
-		len += 2;
 	while (nbr > 0)
 	{
 		len++;
@@ -58,9 +56,11 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 		len = conv->precision;
 	if (sign < 0)
 		len++;
-	if (conv->flags.zero && conv->width > 0 && conv->precision < 0
-			&& len < conv->width)
+	if ((conv->flags.zero && !conv->flags.minus) && conv->width > 0 
+			&& conv->precision < 0 && len < conv->width)
 		len = conv->width;
+	if (conv->type == 'p')
+		len += 2;
 	return (len);
 }
 
@@ -80,8 +80,14 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 	}
 	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'p')
 		base = 16;
-	if (!conv->wildcard && conv->precision == 0 && nbr == 0)
+	if (conv->wildcard && conv->precision == 0 && nbr == 0)
 		return (ft_strdup(""));
+	if (!conv->wildcard && conv->precision == 0 && nbr == 0)
+	{
+		if (conv->type == 'p')
+			return (ft_strdup("0x"));
+		return (ft_strdup(""));
+	}
 	len = ft_nbr_len(nbr, sign, base, conv);
 	buf = ft_nbrbase_to_buf(nbr, base, len, conv);
 	if (sign < 0)
