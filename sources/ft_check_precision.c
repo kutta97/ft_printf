@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 01:37:07 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 15:07:33 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:27:52 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ va_list	*ft_check_precision(va_list *ap, char *format, int *i, t_convs *conv)
 	}
 	if (format[*i] == '*')
 	{
-		conv->precision = va_arg(*ap, int);;
+		conv->precision = va_arg(*ap, int);
+		conv->wildcard = 1;
 		(*i)++;
 		return (ap);
 	}
