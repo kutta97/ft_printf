@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 03:17:39 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 15:32:46 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:36:42 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 	int	len;
 
 	len = 0;
-	if (nbr == 0 || sign < 0)
+	if (nbr == 0)
 		len++;
 	if (conv->type == 'p')
 		len += 2;
@@ -54,6 +54,13 @@ int		ft_nbr_len(unsigned long long nbr, int sign, int base, t_convs *conv)
 		len++;
 		nbr /= base;
 	}
+	if (len < conv->precision)
+		len = conv->precision;
+	if (sign < 0)
+		len++;
+	if (conv->flags.zero && conv->width > 0 && conv->precision < 0
+			&& len < conv->width)
+		len = conv->width;
 	return (len);
 }
 
@@ -73,6 +80,8 @@ char	*ft_set_nbrbuf(unsigned long long nbr, t_convs *conv)
 	}
 	if (conv->type == 'x' || conv->type == 'X' || conv->type == 'p')
 		base = 16;
+	if (!conv->wildcard && conv->precision == 0 && nbr == 0)
+		return (ft_strdup(""));
 	len = ft_nbr_len(nbr, sign, base, conv);
 	buf = ft_nbrbase_to_buf(nbr, base, len, conv);
 	if (sign < 0)
@@ -91,6 +100,9 @@ int		ft_print_nbr(unsigned long long nbr, t_convs *conv)
 	ncp = 0;
 	buf = 0;
 	space = (conv->flags.zero && !conv->flags.minus) ? '0' : ' ';
+	if (conv->flags.zero && conv->precision > -1
+								&& conv->precision < conv->width)
+		space = ' ';
 	if (!(buf = ft_set_nbrbuf(nbr, conv)))
 		return (0);
 	if (conv->flags.minus)
