@@ -6,22 +6,22 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 15:13:15 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 16:49:34 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int		ft_print_conversions(va_list ap, t_convs *conv)
+int		ft_print_conversions(va_list *ap, t_convs *conv)
 {
 	if (conv->type == '%')
 		return (ft_print_chr('%', conv));
 	if (conv->type == 'c')
-		return (ft_print_chr(va_arg(ap, int), conv));
+		return (ft_print_chr(va_arg(*ap, int), conv));
 	if (conv->type == 's')
-		return (ft_print_str(va_arg(ap, char *), conv));
+		return (ft_print_str(va_arg(*ap, char *), conv));
 	if (conv->type == 'd' || conv->type == 'i')
-		return (ft_print_nbr(va_arg(ap, int), conv));
+		return (ft_print_nbr(va_arg(*ap, int), conv));
 	// if (conv->type == 'x' || conv->type == 'X' || conv->type == 'u')
 	// 	return (ft_print_nbr(va_arg(ap, unsigned int), conv));
 	// if (conv->type == 'p')
@@ -60,7 +60,7 @@ int		ft_parse_format(va_list ap, char *format, t_convs *conv)
 			i = ft_analyze_conversions(&ap, format, i, conv);
 			if (i > tmp)
 			{
-				num += ft_print_conversions(ap, conv);
+				num += ft_print_conversions(&ap, conv);
 				continue ;
 			}
 		}
