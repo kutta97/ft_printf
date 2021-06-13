@@ -6,7 +6,7 @@
 /*   By: hyyang <hyyang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 21:14:58 by hyyang            #+#    #+#             */
-/*   Updated: 2021/06/13 20:57:40 by hyyang           ###   ########.fr       */
+/*   Updated: 2021/06/13 21:13:00 by hyyang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_analyze_conversions(va_list ap, char *format, int i, t_convs *conv)
 	ft_check_precision(ap, format, &i, conv);
 	ft_check_type(format, &i, conv);
 	if (conv->type == 0)
-		return (format_start);   
+		return (format_start);
 	return (i);
 }
 
